@@ -12,8 +12,9 @@ workflows:
             -scheme "bitchat (iOS)" \
             -sdk iphoneos \
             -configuration Release \
+            -derivedDataPath "$CM_BUILD_DIR/build" \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             build
     artifacts:
-      - build/**/*.app
+      - build/Build/Products/Release-iphoneos/*.app
