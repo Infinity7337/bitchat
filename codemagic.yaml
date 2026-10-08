@@ -1,0 +1,19 @@
+workflows:
+  build_ios:
+    name: Build BitChat iOS
+    instance_type: mac_mini_m2
+    environment:
+      xcode: latest
+    scripts:
+      - name: Build iOS app
+        script: |
+          xcodebuild \
+            -project "$CM_BUILD_DIR/bitchat.xcodeproj" \
+            -scheme "bitchat (iOS)" \
+            -sdk iphoneos \
+            -configuration Release \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            build
+    artifacts:
+      - build/**/*.app
